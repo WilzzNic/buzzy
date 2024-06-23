@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Register
+{% endblock %}
+
+{% block body %}
+  <div class="w-auto h-screen flex justify-center">
+    <div class="block w-full max-w-md h-auto my-auto p-8 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <h1 class="text-4xl font-bold mb-8">Register</h1>
+
+      {{ form_errors(registrationForm) }}
+
+      {{ form_start(registrationForm) }}
+      {{ form_row(registrationForm.username) }}
+      {{ form_row(registrationForm.plainPassword, { label: 'Password' }) }}
+      {# {{ form_row(registrationForm.agreeTerms) }} #}
+
+      <button type="submit" class="mt-8 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Submit</button>
+
+      {{ form_end(registrationForm) }}
+    </div>
+  </div>
+{% endblock %}
