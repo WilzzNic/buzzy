@@ -9,10 +9,8 @@ use Doctrine\Persistence\ManagerRegistry;
 /**
  * @extends ServiceEntityRepository<GroupChannels>
  */
-class GroupChannelsRepository extends ServiceEntityRepository
-{
-    public function __construct(ManagerRegistry $registry)
-    {
+class GroupChannelsRepository extends ServiceEntityRepository {
+    public function __construct(ManagerRegistry $registry) {
         parent::__construct($registry, GroupChannels::class);
     }
 

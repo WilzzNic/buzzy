@@ -77,4 +77,42 @@ class GroupChannels {
     public function getUpdatedAt(): ?DateTime {
         return $this->updated_at;
     }
+
+    public function getCreatedBy(): ?string
+    {
+        return $this->createdBy;
+    }
+
+    public function setCreatedBy(string $createdBy): static
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $created_at): static
+    {
+        $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getUpdatedBy(): ?string
+    {
+        return $this->updatedBy;
+    }
+
+    public function setUpdatedBy(?string $updatedBy): static
+    {
+        $this->updatedBy = $updatedBy;
+
+        return $this;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updated_at): static
+    {
+        $this->updated_at = $updated_at;
+
+        return $this;
+    }
 }
