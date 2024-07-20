@@ -12,9 +12,11 @@ class GroupChannelsController extends AbstractController {
     #[Route('/group/channels', name: 'app_group_channels')]
     #[IsGranted('ROLE_USER')]
     public function index(GroupChannelsRepository $repository): Response {
+        $channels = $repository->findAll();
 
         return $this->render('group_channels/index.html.twig', [
             'controller_name' => 'GroupChannelsController',
+            'channels' => $channels,
         ]);
     }
 }
