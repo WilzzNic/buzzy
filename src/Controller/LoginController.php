@@ -12,7 +12,7 @@ class LoginController extends AbstractController {
     public function index(AuthenticationUtils $authenticationUtils): Response {
         // If the user is already authenticated, redirect to the group channels page
         if ($this->getUser()) {
-            return $this->redirectToRoute('app_group_channels');
+            return $this->redirectToRoute('app_group_channels_index');
         }
 
         // get the login error if there is one

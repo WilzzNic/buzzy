@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit GroupChannels{% endblock %}
+
+{% block body %}
+    <h1>Edit GroupChannels</h1>
+
+    {{ include('group_channels/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_group_channels_index') }}">back to list</a>
+
+    {{ include('group_channels/_delete_form.html.twig') }}
+{% endblock %}

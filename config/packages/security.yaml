@@ -20,7 +20,7 @@ security:
                 enable_csrf: true
                 login_path: app_login
                 check_path: app_login
-                default_target_path: app_group_channels
+                default_target_path: app_group_channels_index
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall

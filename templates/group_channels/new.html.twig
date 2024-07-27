@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New GroupChannels{% endblock %}
+
+{% block body %}
+    <h3>Create new GroupChannels</h1>
+
+    {{ include('group_channels/_form.html.twig') }}
+
+    <a href="{{ path('app_group_channels_index') }}">back to list</a>
+{% endblock %}
