@@ -28,16 +28,18 @@ class GroupChannels {
      * @Gedmo\Blameable(on="create")
      * @ORM\Column(type="string")
      */
-    #[ORM\Column(type: Types::STRING, nullable: false)]
+    #[ORM\ManyToOne(targetEntity: User::class)]
+    #[ORM\JoinColumn(name: 'created_by', referencedColumnName: 'username')]
+    #[ORM\Column(name: 'created_by', type: Types::STRING, nullable: false)]
     #[Gedmo\Blameable(on: 'create')]
     private ?string $createdBy;
 
     /**
      * @var DateTime|null
      */
-    #[ORM\Column(name: 'created_at', type: Types::DATE_MUTABLE, nullable: false)]
+    #[ORM\Column(name: 'created_at', type: Types::DATETIME_MUTABLE, nullable: false)]
     #[Gedmo\Timestampable(on: 'create')]
-    private ?DateTime $created_at;
+    private ?DateTime $createdAt;
 
     /**
      * @var string|null
@@ -45,7 +47,9 @@ class GroupChannels {
      * @Gedmo\Blameable(on="update")
      * @ORM\Column(type="string")
      */
-    #[ORM\Column(type: Types::STRING, nullable: true)]
+    #[ORM\ManyToOne(targetEntity: User::class)]
+    #[ORM\JoinColumn(name: 'updated_by', referencedColumnName: 'username')]
+    #[ORM\Column(name: 'updated_by', type: Types::STRING, nullable: true)]
     #[Gedmo\Blameable(on: 'update')]
     private ?string $updatedBy;
 
@@ -54,7 +58,7 @@ class GroupChannels {
      */
     #[ORM\Column(name: 'updated_at', type: Types::DATETIME_MUTABLE, nullable: true)]
     #[Gedmo\Timestampable(on: 'update')]
-    private ?DateTime $updated_at;
+    private ?DateTime $updatedAt;
 
     public function getGroupChannelId(): ?int {
         return $this->groupChannelId;
@@ -71,47 +75,41 @@ class GroupChannels {
     }
 
     public function getCreatedAt(): ?DateTime {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
     public function getUpdatedAt(): ?DateTime {
-        return $this->updated_at;
+        return $this->updatedAt;
     }
 
-    public function getCreatedBy(): ?string
-    {
+    public function getCreatedBy(): ?string {
         return $this->createdBy;
     }
 
-    public function setCreatedBy(string $createdBy): static
-    {
+    public function setCreatedBy(string $createdBy): static {
         $this->createdBy = $createdBy;
 
         return $this;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): static
-    {
-        $this->created_at = $created_at;
+    public function setCreatedAt(\DateTimeInterface $created_at): static {
+        $this->createdAt = $created_at;
 
         return $this;
     }
 
-    public function getUpdatedBy(): ?string
-    {
+    public function getUpdatedBy(): ?string {
         return $this->updatedBy;
     }
 
-    public function setUpdatedBy(?string $updatedBy): static
-    {
+    public function setUpdatedBy(?string $updatedBy): static {
         $this->updatedBy = $updatedBy;
 
         return $this;
     }
 
-    public function setUpdatedAt(?\DateTimeInterface $updated_at): static
-    {
-        $this->updated_at = $updated_at;
+    public function setUpdatedAt(?\DateTimeInterface $updated_at): static {
+        $this->updatedAt = $updated_at;
 
         return $this;
     }

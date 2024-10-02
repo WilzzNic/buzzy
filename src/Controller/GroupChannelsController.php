@@ -6,6 +6,7 @@ use App\Entity\GroupChannels;
 use App\Form\GroupChannelsType;
 use App\Repository\GroupChannelsRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -26,7 +27,7 @@ class GroupChannelsController extends AbstractController {
     }
 
     #[Route('/new', name: 'app_group_channels_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response {
+    public function new(Request $request, EntityManagerInterface $entityManager, LoggerInterface $logger): Response {
         $groupChannel = new GroupChannels();
         $form = $this->createForm(GroupChannelsType::class, $groupChannel);
         $form->handleRequest($request);

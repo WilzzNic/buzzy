@@ -6,6 +6,13 @@ framework:
     # Note that the session will be started ONLY if you read or write from it.
     session: true
 
+    default_locale: '%locale%'
+    translator:
+        fallbacks:
+            - '%locale%'
+    http_client:
+        default_options:
+            verify_peer: false
     #esi: true
     #fragments: true
 

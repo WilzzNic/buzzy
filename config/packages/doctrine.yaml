@@ -15,6 +15,9 @@ doctrine:
         validate_xml_mapping: true
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
         auto_mapping: true
+        filters:
+            softdeleteable:
+                class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
         mappings:
             App:
                 type: attribute
@@ -22,6 +25,22 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'App\Entity'
                 alias: App
+            translatable:
+                type: attribute # or annotation or xml
+                alias: Gedmo
+                prefix: Gedmo\Translatable\Entity
+                # make sure vendor library location is correct
+                dir: "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/src/Translatable/Entity"
+            loggable:
+                type: attribute # or annotation or xml
+                alias: Gedmo
+                prefix: Gedmo\Loggable\Entity
+                dir: "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/src/Loggable/Entity"
+            tree:
+                type: attribute # or annotation or xml
+                alias: Gedmo
+                prefix: Gedmo\Tree\Entity
+                dir: "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/src/Tree/Entity"
         controller_resolver:
             auto_mapping: false
 
@@ -30,6 +49,8 @@ when@test:
         dbal:
             # "TEST_TOKEN" is typically set by ParaTest
             dbname_suffix: '_test%env(default::TEST_TOKEN)%'
+            logging: true
+            profiling: true
 
 when@prod:
     doctrine:
