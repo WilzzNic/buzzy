@@ -14,7 +14,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 class Task {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(type: Types::BIGINT)]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
@@ -22,6 +22,9 @@ class Task {
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
+
+    #[ORM\Column(type: Types::BIGINT)]
+    private ?string $group_channel_id = null;
 
     /**
      * @var string|null
@@ -61,9 +64,6 @@ class Task {
     #[Gedmo\Timestampable(on: 'update')]
     private ?DateTime $updatedAt;
 
-    #[ORM\Column(type: Types::BIGINT)]
-    private ?string $group_channel_id = null;
-
     public function getId(): ?int {
         return $this->id;
     }
@@ -84,6 +84,16 @@ class Task {
 
     public function setDescription(?string $description): static {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getGroupChannelId(): ?string {
+        return $this->group_channel_id;
+    }
+
+    public function setGroupChannelId(string $group_channel_id): static {
+        $this->group_channel_id = $group_channel_id;
 
         return $this;
     }
@@ -124,18 +134,6 @@ class Task {
 
     public function setUpdatedAt(?\DateTimeInterface $updated_at): static {
         $this->updatedAt = $updated_at;
-
-        return $this;
-    }
-
-    public function getGroupChannelId(): ?string
-    {
-        return $this->group_channel_id;
-    }
-
-    public function setGroupChannelId(string $group_channel_id): static
-    {
-        $this->group_channel_id = $group_channel_id;
 
         return $this;
     }
