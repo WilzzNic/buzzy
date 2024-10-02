@@ -44,4 +44,20 @@ class GroupChannelsController extends AbstractController {
             'form' => $form,
         ]);
     }
+
+    #[Route('/show/{id}', name: 'app_group_channels_show', methods: ['GET'])]
+    public function show(EntityManagerInterface $entityManager, int $id): Response {
+        $channels = $entityManager->getRepository(GroupChannels::class)->findAll();
+
+        $groupChannel = $entityManager->getRepository(GroupChannels::class)->find($id);
+
+        if ($groupChannel === null) {
+            throw $this->createNotFoundException('The group channel does not exist');
+        }
+
+        return $this->render('group_channels/show.html.twig', [
+            'group_channel' => $groupChannel,
+            'channels' => $channels,
+        ]);
+    }
 }

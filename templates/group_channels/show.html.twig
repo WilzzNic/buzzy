@@ -1,6 +1,10 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_base.html.twig' %}
 
 {% block title %}GroupChannels{% endblock %}
+
+{% block sidebar %}
+  {{ include('channel_sidebar.html.twig', {channels: channels}) }}
+{% endblock %}
 
 {% block body %}
     <h1>GroupChannels</h1>
@@ -36,7 +40,7 @@
 
     <a href="{{ path('app_group_channels_index') }}">back to list</a>
 
-    <a href="{{ path('app_group_channels_edit', {'groupChannelId': group_channel.groupChannelId}) }}">edit</a>
+    {# <a href="{{ path('app_group_channels_edit', {'groupChannelId': group_channel.groupChannelId}) }}">edit</a> #}
 
-    {{ include('group_channels/_delete_form.html.twig') }}
+    {# {{ include('group_channels/_delete_form.html.twig') }} #}
 {% endblock %}
