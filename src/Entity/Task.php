@@ -23,30 +23,6 @@ class Task {
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    public function getId(): ?int {
-        return $this->id;
-    }
-
-    public function getTitle(): ?string {
-        return $this->title;
-    }
-
-    public function setTitle(string $title): static {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string {
-        return $this->description;
-    }
-
-    public function setDescription(?string $description): static {
-        $this->description = $description;
-
-        return $this;
-    }
-
     /**
      * @var string|null
      *
@@ -84,4 +60,83 @@ class Task {
     #[ORM\Column(name: 'updated_at', type: Types::DATETIME_MUTABLE, nullable: true)]
     #[Gedmo\Timestampable(on: 'update')]
     private ?DateTime $updatedAt;
+
+    #[ORM\Column(type: Types::BIGINT)]
+    private ?string $group_channel_id = null;
+
+    public function getId(): ?int {
+        return $this->id;
+    }
+
+    public function getTitle(): ?string {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): static {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): static {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?DateTime {
+        return $this->createdAt;
+    }
+
+    public function getUpdatedAt(): ?DateTime {
+        return $this->updatedAt;
+    }
+
+    public function getCreatedBy(): ?string {
+        return $this->createdBy;
+    }
+
+    public function setCreatedBy(string $createdBy): static {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $created_at): static {
+        $this->createdAt = $created_at;
+
+        return $this;
+    }
+
+    public function getUpdatedBy(): ?string {
+        return $this->updatedBy;
+    }
+
+    public function setUpdatedBy(?string $updatedBy): static {
+        $this->updatedBy = $updatedBy;
+
+        return $this;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updated_at): static {
+        $this->updatedAt = $updated_at;
+
+        return $this;
+    }
+
+    public function getGroupChannelId(): ?string
+    {
+        return $this->group_channel_id;
+    }
+
+    public function setGroupChannelId(string $group_channel_id): static
+    {
+        $this->group_channel_id = $group_channel_id;
+
+        return $this;
+    }
 }
