@@ -56,7 +56,7 @@ class GroupChannelsController extends AbstractController {
         }
 
         return $this->render('group_channels/show.html.twig', [
-            'group_channel' => $groupChannel,
+            'groupChannel' => $groupChannel,
             'channels' => $channels,
         ]);
     }
