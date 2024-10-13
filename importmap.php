@@ -35,4 +35,9 @@ return [
         'version' => '2.3.0',
         'type' => 'css',
     ],
+    'flowbite/dist/flowbite.turbo.js' => [
+        // 'path' => './node_modules/flowbite/dist/flowbite.turbo.js',
+        'path' => './assets/flowbite.turbo.js',
+        'type' => 'js'
+    ],
 ];

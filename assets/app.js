@@ -8,9 +8,9 @@ import './bootstrap.js';
 import './styles/app.css';
 
 // enable the interactive UI components from Flowbite
-import 'flowbite';
+// import 'flowbite';
 
 // enable the interactive UI components from Flowbite with Turbo
-// import 'flowbite/dist/flowbite.turbo.js';
+import 'flowbite/dist/flowbite.turbo.js';
 
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
