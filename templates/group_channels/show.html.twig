@@ -1,91 +1,43 @@
 {% extends 'admin_base.html.twig' %}
 
-{% block title %}GroupChannels
+{% block title %}
+  GroupChannels
 {% endblock %}
 
 {% block sidebar %}
-	{{ include('channel_sidebar.html.twig', {channels: channels}) }}
+  {{ include('channel_sidebar.html.twig', { channels: channels }) }}
 {% endblock %}
 
 {% block body %}
-	<h1
-		class="text-2xl font-bold mx-0 mt-1 mb-3 px-2 py-1">{{ groupChannel.channelName }}</h1>
+  <h1 class="text-2xl font-bold mx-0 mt-1 mb-3 px-2 py-1">{{ groupChannel.channelName }}</h1>
 
-	<div
-		class="mb-4 border-b border-gray-200 dark:border-gray-700">
-		<ul
-			class="hidden text-sm font-medium text-center text-gray-500 rounded-lg shadow sm:flex dark:divide-gray-700 dark:text-gray-400"
-			data-tabs-toggle="#default-styled-tab-content"
-			data-tabs-active-classes="bg-blue-700 text-white hover:text-gray-700 hover:bg-gray-50"
-			data-tabs-inactive-classes=""
-			role="tablist">
-			<li
-				class="w-full focus-within:z-10"
-				role="presentation">
-				<a
-					id="profile-tab"
-					class="cursor-pointer inline-block w-full p-4 border-r rounded-l-lg border-gray-200 focus:ring-4 focus:ring-blue-300 focus:outline-none hover:text-gray-700 hover:bg-blue-50"
-					data-tabs-target="#profile"
-					role="tab"
-					aria-controls="profile"
-					aria-selected="false">Profile</a>
-			</li>
-			<li
-				class="w-full focus-within:z-10"
-				role="presentation">
-				<a
-					id="dashboard-tab"
-					class="cursor-pointer inline-block w-full p-4 border-r border-gray-200 focus:ring-4 focus:ring-blue-300 focus:outline-none hover:text-gray-700 hover:bg-blue-50"
-					data-tabs-target="#dashboard"
-					role="tab"
-					aria-controls="dashboard"
-					aria-selected="false">Dashboard</a>
-			</li>
-			<li
-				class="w-full focus-within:z-10"
-				role="presentation">
-				<a
-					id="settings-tab"
-					class="cursor-pointer inline-block w-full p-4 border-r rounded-r-lg border-gray-200 focus:ring-4 focus:ring-blue-300 focus:outline-none hover:text-gray-700 hover:bg-blue-50"
-					data-tabs-target="#settings"
-					role="tab"
-					aria-controls="settings"
-					aria-selected="false">Settings</a>
-			</li>
-		</ul>
-	</div>
-	<div
-		id="default-tab-content">
-		<div
-			class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
-			id="profile"
-			role="tabpanel"
-			aria-labelledby="profile-tab">
-			<p
-				class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the
-				<strong
-					class="font-medium text-gray-800 dark:text-white">Profile tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
-		</div>
-		<div
-			class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
-			id="dashboard"
-			role="tabpanel"
-			aria-labelledby="dashboard-tab">
-			<p
-				class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the
-				<strong
-					class="font-medium text-gray-800 dark:text-white">Dashboard tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
-		</div>
-		<div
-			class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
-			id="settings"
-			role="tabpanel"
-			aria-labelledby="settings-tab">
-			<p
-				class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the
-				<strong
-					class="font-medium text-gray-800 dark:text-white">Settings tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
-		</div>
-	</div>
-
+  <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+    <ul class="hidden text-sm font-medium text-center text-gray-500 rounded-lg shadow sm:flex dark:divide-gray-700 dark:text-gray-400" data-tabs-toggle="#default-styled-tab-content" data-tabs-active-classes="bg-blue-700 text-white hover:text-gray-700 hover:bg-gray-50" data-tabs-inactive-classes="" role="tablist">
+      <li class="w-full focus-within:z-10" role="presentation">
+        <a id="profile-tab" class="cursor-pointer inline-block w-full p-4 border-r rounded-l-lg border-gray-200 focus:ring-4 focus:ring-blue-300 focus:outline-none hover:text-gray-700 hover:bg-blue-50" data-tabs-target="#not-started" role="tab" aria-controls="not-started" aria-selected="false">Not Started</a>
+      </li>
+      <li class="w-full focus-within:z-10" role="presentation">
+        <a id="dashboard-tab" class="cursor-pointer inline-block w-full p-4 border-r border-gray-200 focus:ring-4 focus:ring-blue-300 focus:outline-none hover:text-gray-700 hover:bg-blue-50" data-tabs-target="#dashboard" role="tab" aria-controls="dashboard" aria-selected="false">Dashboard</a>
+      </li>
+      <li class="w-full focus-within:z-10" role="presentation">
+        <a id="settings-tab" class="cursor-pointer inline-block w-full p-4 border-r rounded-r-lg border-gray-200 focus:ring-4 focus:ring-blue-300 focus:outline-none hover:text-gray-700 hover:bg-blue-50" data-tabs-target="#settings" role="tab" aria-controls="settings" aria-selected="false">Settings</a>
+      </li>
+    </ul>
+  </div>
+  <div id="default-tab-content">
+    <div>{{ include('group_channels/_not_started.html.twig') }}</div>
+    
+    <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        This is some placeholder content the
+        <strong class="font-medium text-gray-800 dark:text-white">Dashboard tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.
+      </p>
+    </div>
+    <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        This is some placeholder content the
+        <strong class="font-medium text-gray-800 dark:text-white">Settings tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.
+      </p>
+    </div>
+  </div>
 {% endblock %}
